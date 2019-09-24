@@ -4,60 +4,62 @@
         <title>Music Maker</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Montserrat|Mansalva|Roboto|Oswald&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Knewave|Righteous|Montserrat|Mansalva|Roboto|Oswald&display=swap" rel="stylesheet">
+        <link href="music.css" rel="stylesheet">
     </head>
     <body>
+        <h1>1-Octave Piano</h1>
         <div class="keys">
-            <div class="key key-black px200" id="Gsh">
+            <div data-key="81" class="key key-black px200" id="Gsh">
                 <kbd>Q</kbd>
                 <span class="sound">G#</span>
             </div>
             <div class="empty empty1"></div>
-            <div class="px400 key key-white" id="A">
+            <div data-key="65" class="px400 key key-white" id="A">
                 <kbd>A</kbd>
                 <span class="sound">A</span>
             </div>
-            <div class="px200 key key-black" id="Bfl">
+            <div data-key="87" class="px200 key key-black" id="Bfl">
                 <kbd>W</kbd>
                 <span class="sound">Bb</span>
             </div>
             <div class="empty empty2"></div>
-            <div class="px400 key key-white" id="B">
+            <div data-key="83" class="px400 key key-white" id="B">
                 <kbd>S</kbd>
                 <span class="sound">B</span>
             </div>
-            <div class="px400 key key-white" id="C">
+            <div data-key="69" class="px400 key key-white" id="C">
                 <kbd>E</kbd>
                 <span class="sound">C</span>
             </div>
-            <div class="px200 key key-black" id="Csh">
+            <div data-key="68" class="px200 key key-black" id="Csh">
                 <kbd>D</kbd>
                 <span class="sound">C#</span>
             </div>
             <div class="empty empty3"></div>
-            <div class="px400 key key-white" id="D">
+            <div data-key="82" class="px400 key key-white" id="D">
                 <kbd>R</kbd>
                 <span class="sound">D</span>
             </div>
-            <div class="px200 key key-black" id="Dsh">
+            <div data-key="70" class="px200 key key-black" id="Dsh">
                 <kbd>F</kbd>
                 <span class="sound">D#</span>
             </div>
             <div class="empty empty4"></div>
-            <div class="px400 key key-white" id="E">
+            <div data-key="84" class="px400 key key-white" id="E">
                 <kbd>T</kbd>
                 <span class="sound">E</span>
             </div>
-            <div class="px400 key key-white" id="F">
+            <div data-key="71" class="px400 key key-white" id="F">
                 <kbd>G</kbd>
                 <span class="sound">F</span>
             </div>
-            <div class="px200 key key-black" id="Fsh">
+            <div data-key="89" class="px200 key key-black" id="Fsh">
                 <kbd>Y</kbd>
                 <span class="sound">F#</span>
             </div>
             <div class="empty empty5"></div>
-            <div class="px400 key key-white" id="G">
+            <div data-key="72" class="px400 key key-white" id="G">
                 <kbd>H</kbd>
                 <span class="sound">G</span>
             </div>
@@ -79,14 +81,27 @@
         <script>
             window.addEventListener('keydown', function(e) {
                 const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-                const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+                const keyBlack = document.querySelector(`.key-black[data-key="${e.keyCode}"]`);
                 if (!audio) {
                     return;
                 }
                 audio.currentTime = 0;
                 audio.play();
-                key.classList.add('active');
+
+                keyBlack.classList.add('active-key-black');
             });
+            
+            function removeTransition(e) {
+                if (e.propertyName !== 'transition') return;
+                keyBlack.classList.add('no-transition');
+                keyBlack.classList.remove('active-key-black');
+                e.target.classList.remove('active-key-black');
+                e.target.classList.add('no-transition');
+            }
+
+            const keys = Array.from(document.querySelectorAll('.key'));
+            keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+            window.addEventListener('keydown', playSound);
         </script>
     </body>
 </html>
