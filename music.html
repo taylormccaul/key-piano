@@ -5,180 +5,60 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Montserrat|Mansalva|Roboto|Oswald&display=swap" rel="stylesheet">
-        <style>
-            .key {
-                /*background-color: #202020;*/
-                opacity: 0.8;
-                width: 10vw;
-                height: auto;
-                border: 3px solid black;
-                float: left;
-                color: white;
-                text-align: center;
-                padding: 10px;
-                box-sizing: border-box;
-                transition: all 0.08s;
-                border-radius: 10px;
-            }
-
-            .key-white {
-                background-color: white;
-                margin: 3px;
-                margin-left: 3em;
-                color: black;
-            }
-
-            .key-black {
-                background-color: black;
-                margin: 5px;
-                color: white;
-            }
-
-            .active {
-                transform: scale(1.1);
-                border: 3px solid #5dade2;
-                box-shadow: 0px 0px 10px #32ad8e;
-            }
-
-            body {
-                background-image: url('piano-right.jpg');
-                background-position-y: -70vh;
-            }
-
-            kbd {
-                font-family: 'Montserrat', Arial, sans-serif;
-                font-size: 1.2em;
-                display: block;
-            }
-
-            .sound {
-                font-family: 'Oswald', Helvetica, sans-serif;
-                font-size: 2.2em;
-                display: block;
-            }
-    
-            .keys {
-                display: grid;
-                grid-template-areas:
-                    "Gsh Gsh Bfl Bfl Csh Efl Fsh"
-                    "A B C D E F G";
-                margin-top: 6em;
-            }
-
-            #Gsh {
-                grid-area: Gsh;
-                margin-left: 1vw;
-            }
-
-            #Bfl {
-                grid-area: Bfl;
-                margin-left: -17vw;
-            }
-
-            #Csh {
-                grid-area: Csh;
-                margin-left: -17vw;
-            }
-
-            #Efl {
-                grid-area: Efl;
-                margin-left: -6vw;
-            }
-
-            #Fsh {
-                grid-area: Fsh;
-                margin-left: -6vw;
-            }
-
-            #A {
-                grid-area: A;
-                margin-left: 3.5vw;
-                margin-right: -2vw;
-            }
-
-            #B {
-                grid-area: B;
-            }
-
-            #C {
-                grid-area: C;
-                margin-left: 1vw;
-            }
-
-            #D {
-                grid-area: D;
-                margin-left: 1vw;
-                margin-right: -2.2vw;
-            }
-
-            #E {
-                grid-area: E;
-            }
-
-            #F {
-                grid-area: F;
-                margin-left: 1vw;
-            }
-
-            #G {
-                grid-area: G;
-                margin-left: 1vw;
-            }
-
-            /*.key {
-                background-color: rgb(32, 32, 32);
-                margin: 10px;
-            }*/
-        </style>
     </head>
     <body>
         <div class="keys">
-            <div data-key="81" class="key key-black" id="Gsh">
+            <div class="key key-black px200" id="Gsh">
                 <kbd>Q</kbd>
                 <span class="sound">G#</span>
             </div>
-            <div data-key="65" class="key key-white" id="A">
+            <div class="empty empty1"></div>
+            <div class="px400 key key-white" id="A">
                 <kbd>A</kbd>
                 <span class="sound">A</span>
             </div>
-            <div data-key="87" class="key key-black" id="Bfl">
+            <div class="px200 key key-black" id="Bfl">
                 <kbd>W</kbd>
                 <span class="sound">Bb</span>
             </div>
-            <div data-key="83" class="key key-white" id="B">
+            <div class="empty empty2"></div>
+            <div class="px400 key key-white" id="B">
                 <kbd>S</kbd>
                 <span class="sound">B</span>
             </div>
-            <div data-key="69" class="key key-white" id="C">
+            <div class="px400 key key-white" id="C">
                 <kbd>E</kbd>
                 <span class="sound">C</span>
             </div>
-            <div data-key="68" class="key key-black" id="Csh">
+            <div class="px200 key key-black" id="Csh">
                 <kbd>D</kbd>
                 <span class="sound">C#</span>
             </div>
-            <div data-key="82" class="key key-white" id="D">
+            <div class="empty empty3"></div>
+            <div class="px400 key key-white" id="D">
                 <kbd>R</kbd>
                 <span class="sound">D</span>
             </div>
-            <div data-key="70" class="key key-black" id="Efl">
+            <div class="px200 key key-black" id="Dsh">
                 <kbd>F</kbd>
-                <span class="sound">Eb</span>
+                <span class="sound">D#</span>
             </div>
-            <div data-key="84" class="key key-white" id="E">
+            <div class="empty empty4"></div>
+            <div class="px400 key key-white" id="E">
                 <kbd>T</kbd>
                 <span class="sound">E</span>
             </div>
-            <div data-key="71" class="key key-white" id="F">
+            <div class="px400 key key-white" id="F">
                 <kbd>G</kbd>
                 <span class="sound">F</span>
             </div>
-            <div data-key="89" class="key key-black" id="Fsh">
+            <div class="px200 key key-black" id="Fsh">
                 <kbd>Y</kbd>
                 <span class="sound">F#</span>
             </div>
-            <div data-key="72" class="key key-white" id="G">
-                 <kbd>H</kbd>
+            <div class="empty empty5"></div>
+            <div class="px400 key key-white" id="G">
+                <kbd>H</kbd>
                 <span class="sound">G</span>
             </div>
         </div>
@@ -195,12 +75,11 @@
         <audio data-key="71" src="sounds/68446__pinkyfinger__piano-f.wav"></audio>
         <audio data-key="89" src="sounds/68445__pinkyfinger__piano-f.wav"></audio>
         <audio data-key="72" src="sounds/68448__pinkyfinger__piano-g.wav"></audio>
-        
+
         <script>
             window.addEventListener('keydown', function(e) {
                 const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
                 const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-                console.log(audio);
                 if (!audio) {
                     return;
                 }
